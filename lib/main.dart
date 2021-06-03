@@ -125,8 +125,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: ColoredBox(
                       color: (defendingBodyPart != null &&
                               attackingBodyPart != null)
-                          ? Color.fromRGBO(0, 0, 0, 0.87)
-                          : Color.fromRGBO(0, 0, 0, 0.38),
+                          ? Colors.black87
+                          : Colors.black38,
                       child: Center(
                         child: Text(
                           'go'.toUpperCase(),
@@ -166,8 +166,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _pressedGo() {
     setState(() {
-      defendingBodyPart = null;
-      attackingBodyPart = null;
+      if(defendingBodyPart != null && attackingBodyPart != null){
+        defendingBodyPart = null;
+        attackingBodyPart = null;
+      }
     });
   }
 }
@@ -241,7 +243,7 @@ class BodyPartButton extends StatelessWidget {
         child: ColoredBox(
           color: selected
               ? const Color.fromRGBO(28, 121, 206, 1)
-              : Color.fromRGBO(0, 0, 0, 0.38),
+              : Colors.black38,
           child: Center(
             child: Text(bodyPart.name.toUpperCase()),
           ),
