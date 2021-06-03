@@ -194,7 +194,10 @@ class OurLives extends StatelessWidget {
             child: Center(
                 child: Text(
           '1',
-          style: TextStyle(fontSize: 14, color: Color(0xFF151616)),
+          style: TextStyle(
+            fontSize: 14,
+            color: Color(0xFF151616),
+          ),
         ))),
         SizedBox(width: 16),
       ],
