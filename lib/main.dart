@@ -42,7 +42,7 @@ class MyHomePageState extends State<MyHomePage> {
   BodyPart whatEnemyDefends = BodyPart.random();
 
   int yourLives = maxLives;
-  int enemiesLives = maxLives;
+  int enemysLives = maxLives;
 
   String centerText = '';
 
@@ -56,7 +56,7 @@ class MyHomePageState extends State<MyHomePage> {
             FightersInfo(
               maxLivesCount: maxLives,
               yourLivesCount: yourLives,
-              enemiesLivesCount: enemiesLives,
+              enemysLivesCount: enemysLives,
             ),
             Expanded(
               child: Padding(
@@ -90,7 +90,7 @@ class MyHomePageState extends State<MyHomePage> {
             ),
             SizedBox(height: 14),
             GoButtonWidget(
-              text: (yourLives == 0 || enemiesLives == 0)
+              text: (yourLives == 0 || enemysLives == 0)
                   ? "start new game"
                   : "go",
               onTap: pressedGo,
@@ -104,7 +104,7 @@ class MyHomePageState extends State<MyHomePage> {
   }
 
   Color _getColor() {
-    if (yourLives == 0 || enemiesLives == 0) {
+    if (yourLives == 0 || enemysLives == 0) {
       return FightClubColors.blackButton;
     } else if (defendingBodyPart == null || attackingBodyPart == null) {
       return FightClubColors.greyButton;
@@ -114,10 +114,10 @@ class MyHomePageState extends State<MyHomePage> {
   }
 
   void pressedGo() {
-    if (enemiesLives == 0 || yourLives == 0) {
+    if (enemysLives == 0 || yourLives == 0) {
       setState(() {
         centerText = '';
-        enemiesLives = maxLives;
+        enemysLives = maxLives;
         yourLives = maxLives;
       });
     } else if (defendingBodyPart != null && attackingBodyPart != null) {
@@ -136,7 +136,7 @@ class MyHomePageState extends State<MyHomePage> {
         }
 
         if (enemyLoseLife) {
-          enemiesLives -= 1;
+          enemysLives -= 1;
         }
         if (yourLoseLife) {
           yourLives -= 1;
@@ -148,7 +148,7 @@ class MyHomePageState extends State<MyHomePage> {
         defendingBodyPart = null;
         attackingBodyPart = null;
 
-        if (enemiesLives == 0 || yourLives == 0) {
+        if (enemysLives == 0 || yourLives == 0) {
           centerText = _getTextFinish();
         }
       });
@@ -156,7 +156,7 @@ class MyHomePageState extends State<MyHomePage> {
   }
 
   void _selectDefendingBodyPart(final BodyPart value) {
-    if (enemiesLives == 0 || yourLives == 0) {
+    if (enemysLives == 0 || yourLives == 0) {
       return;
     }
     setState(() {
@@ -165,7 +165,7 @@ class MyHomePageState extends State<MyHomePage> {
   }
 
   void _selectAttackingBodyPart(final BodyPart value) {
-    if (enemiesLives == 0 || yourLives == 0) {
+    if (enemysLives == 0 || yourLives == 0) {
       return;
     }
     setState(() {
@@ -174,9 +174,9 @@ class MyHomePageState extends State<MyHomePage> {
   }
 
   String _getTextFinish() {
-    if (yourLives > enemiesLives) {
+    if (yourLives > enemysLives) {
       return 'You won';
-    } else if (yourLives < enemiesLives) {
+    } else if (yourLives < enemysLives) {
       return 'You lost';
     } else {
       return 'Draw';
@@ -313,13 +313,13 @@ class GoButtonWidget extends StatelessWidget {
 class FightersInfo extends StatelessWidget {
   final int maxLivesCount;
   final int yourLivesCount;
-  final int enemiesLivesCount;
+  final int enemysLivesCount;
 
   const FightersInfo({
     Key? key,
     required this.maxLivesCount,
     required this.yourLivesCount,
-    required this.enemiesLivesCount,
+    required this.enemysLivesCount,
   }) : super(key: key);
 
   @override
@@ -390,7 +390,7 @@ class FightersInfo extends StatelessWidget {
                 ),
                 LivesWidget(
                   overallLivesCount: maxLivesCount,
-                  currentLivesCount: enemiesLivesCount,
+                  currentLivesCount: enemysLivesCount,
                 ),
               ],
             ),
