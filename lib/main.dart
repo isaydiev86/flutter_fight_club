@@ -127,28 +127,20 @@ class MyHomePageState extends State<MyHomePage> {
 
         if(enemyLoseLife && yourLoseLife){
           centerText = "You hit enemy’s ${attackingBodyPart!.name} \n Enemy hit your ${defendingBodyPart!.name}";
-        }
-
-        if(!enemyLoseLife && !yourLoseLife){
+        } else if(!enemyLoseLife && !yourLoseLife){
           centerText = "Enemy’s attack was blocked \n Your attack was blocked";
-        }
-
-        if(enemyLoseLife && !yourLoseLife){
+        } else if(enemyLoseLife && !yourLoseLife){
           centerText = "Enemy’s attack was blocked \n You hit enemy’s ${attackingBodyPart!.name}";
-        }
-        if(!enemyLoseLife && yourLoseLife){
+        } else if(!enemyLoseLife && yourLoseLife){
           centerText = "Your attack was blocked \n Enemy hit your ${defendingBodyPart!.name}";
         }
 
         if (enemyLoseLife) {
-          //centerText = "Enemy’s attack was blocked \n You hit enemy’s ${attackingBodyPart!.name}";
           enemiesLives -= 1;
         }
         if (yourLoseLife) {
-          //centerText = "Your attack was blocked \n Enemy hit your ${defendingBodyPart!.name}";
           yourLives -= 1;
         }
-
 
         whatEnemyDefends = BodyPart.random();
         whatEnemyAttacks = BodyPart.random();
