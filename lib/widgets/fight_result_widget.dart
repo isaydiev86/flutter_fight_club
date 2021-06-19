@@ -5,8 +5,8 @@ import 'package:flutter_fight_club/resources/fight_club_images.dart';
 
 class FightResultWidget extends StatelessWidget {
   final FightResult? fightResult;
-  final Color color;
-  const FightResultWidget({Key? key, required this.fightResult, required this.color}) : super(key: key);
+  //final Color color;
+  const FightResultWidget({Key? key, required this.fightResult}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class FightResultWidget extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(22.0),
                           shape: BoxShape.rectangle,
-                          color: color),
+                          color: const Color(0xFF038800)),
                       child: Center(
                         child: Text(
                           fightResult!.result,
