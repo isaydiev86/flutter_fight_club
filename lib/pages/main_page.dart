@@ -46,7 +46,6 @@ class _MainPageContent extends StatelessWidget {
                       sharedPreferences.getString("last_fight_result")),
               builder: (context, snapshot) {
                 if (!snapshot.hasData || snapshot.data == null) {
-                  print(snapshot.data);
                   return const SizedBox();
                 }
                 return Center(
@@ -59,7 +58,6 @@ class _MainPageContent extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 12),
-                      //FightResultWidget(fightResult: _result(snapshot.data), color: _resultColor(snapshot.data),),
                       FightResultWidget(fightResult: _result(snapshot.data)),
                     ],
                   ),
@@ -95,24 +93,16 @@ class _MainPageContent extends StatelessWidget {
     );
   }
 
-  FightResult? _result(String? data) {
+  FightResult _result(String? data) {
     if(data == "won"){
       return FightResult.won;
     } else if(data == "lost"){
       return FightResult.lost;
     } else if(data == "draw"){
       return FightResult.draw;
+    } else{
+      return FightResult.won;
     }
   }
 
-  Color _resultColor(String? data) {
-    if(data == "won"){
-      return const Color(0xFF038800);
-    } else if(data == "lost"){
-      return const Color(0xFFEA2C2C);
-    } else if(data == "draw"){
-      return const Color(0xFF1C79CE);
-    }
-    return const Color(0xFF1C79CE);
-  }
 }
