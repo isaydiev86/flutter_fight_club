@@ -5,13 +5,12 @@ import 'package:flutter_fight_club/resources/fight_club_images.dart';
 
 class FightResultWidget extends StatelessWidget {
   final FightResult? fightResult;
-  //final Color color;
   const FightResultWidget({Key? key, required this.fightResult}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 160,
+      height: 140,
       child: Stack(
         children: [
           Row(
@@ -61,7 +60,7 @@ class FightResultWidget extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(22.0),
                           shape: BoxShape.rectangle,
-                          color: const Color(0xFF038800)),
+                          color: _resultColor(fightResult!.result)),
                       child: Center(
                         child: Text(
                           fightResult!.result,
@@ -89,5 +88,16 @@ class FightResultWidget extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Color _resultColor(String data) {
+    if(data == "won"){
+      return const Color(0xFF038800);
+    } else if(data == "lost"){
+      return const Color(0xFFEA2C2C);
+    } else if(data == "draw"){
+      return const Color(0xFF1C79CE);
+    }
+    return const Color(0xFF1C79CE);
   }
 }

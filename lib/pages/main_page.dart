@@ -60,7 +60,7 @@ class _MainPageContent extends StatelessWidget {
                       ),
                       const SizedBox(height: 12),
                       //FightResultWidget(fightResult: _result(snapshot.data), color: _resultColor(snapshot.data),),
-                      FightResultWidget(fightResult: FightResult.won),
+                      FightResultWidget(fightResult: _result(snapshot.data)),
                     ],
                   ),
                 );
